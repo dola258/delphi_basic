@@ -6,6 +6,35 @@ interface
 uses
   vcl.Dialogs;
 type
+  TDog = class
+      Name:string;
+    Age:byte;
+    Address:string;
+    function GetName:string;
+  end;
+  TPerson = class(TObject)
+    Name:string;
+    Age:byte;
+    Address:string;
+    function GetName:string;
+    Constructor Create; virtual;
+  end;
+  TEmp = class(TPerson)
+    office:string;
+    function salary:integer; virtual; abstract;  // dynamic // abstract
+    Constructor Create; override;
+  end;
+  TS = class(TEmp)
+    rank:string;
+    function salary:integer; override;
+    Constructor create; override;
+  end;
+  TH = class(TEmp)
+    hours:integer;
+    rate:integer;
+    function salary:integer; override;
+    Constructor create; override;
+  end;
   Country = array [0..2] of string; // 배열(3개)은 자료형은 하나만 지정할 수 있다
   Person = record      // 구조체 선언
     Name:string;
@@ -24,6 +53,7 @@ var
   a2:array of array of string; // a2라는 변수는 2차원 배열(크기 지정x)
   p:p_person;
   ps:pchar;   // 문자열포인터
+  v:variant;  // 문자, 숫자, 날짜, 배열, ole object(엑셀, 워드, PPT 등)
 
 procedure Test; // 프로시저 = 리턴이 없는 루틴
 
@@ -57,9 +87,54 @@ end;
 
 function Divide(x,y:real):real;
 begin
-  Result := x div y;
+  Result := x / y;
 end;
 
+constructor TPerson.Create;
+begin
+  Name := 'Kim';
+  Age := 20;
+  Address :=  'AnyWhere';
+end;
+
+function TPerson.GetName:string;
+begin
+  result := Name;
+end;
+{ TDog }
+function TDog.GetName: string;
+begin
+  result := Self.Name;
+end;
+{ TS }
+constructor TS.create;
+begin
+  inherited;
+  rank := '강사';
+end;
+
+function TS.salary: integer;
+begin
+  result := 3000;
+end;
+{ TH }
+constructor TH.create;
+begin
+  inherited;
+  hours := 10;
+  rate := 5000;
+end;
+
+function TH.salary: integer;
+begin
+  result := hours * rate;
+end;
+{ TEmp }
+constructor TEmp.Create;
+begin
+  inherited;
+  office := '데브기어';
+end;
 
 // uses절을 만나면 실행된다: 초기처리(변수 초기값, 메모리 할당 등)
 initialization
