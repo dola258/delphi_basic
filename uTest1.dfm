@@ -85,4 +85,105 @@ object Form1: TForm1
     TabOrder = 7
     OnClick = Button7Click
   end
+  object Button8: TButton
+    Left = 40
+    Top = 200
+    Width = 89
+    Height = 49
+    Caption = 'th '#49373#49457
+    TabOrder = 8
+    OnClick = Button8Click
+  end
+  object GroupBox1: TGroupBox
+    Left = 152
+    Top = 200
+    Width = 329
+    Height = 217
+    Caption = 'th '#51221#48372
+    TabOrder = 9
+    object Label1: TLabel
+      Left = 40
+      Top = 24
+      Width = 24
+      Height = 15
+      Caption = #51060#47492
+    end
+    object Label2: TLabel
+      Left = 40
+      Top = 56
+      Width = 24
+      Height = 15
+      Caption = #45208#51060
+    end
+    object Label3: TLabel
+      Left = 40
+      Top = 86
+      Width = 24
+      Height = 15
+      Caption = #51452#49548
+    end
+    object Label4: TLabel
+      Left = 40
+      Top = 123
+      Width = 24
+      Height = 15
+      Caption = #54924#49324
+    end
+    object Label5: TLabel
+      Left = 40
+      Top = 159
+      Width = 24
+      Height = 15
+      Caption = #44553#50668
+    end
+    object Label6: TLabel
+      Left = 40
+      Top = 188
+      Width = 24
+      Height = 15
+      Caption = #44592#53440
+    end
+    object Edit1: TEdit
+      Left = 96
+      Top = 24
+      Width = 121
+      Height = 23
+      TabOrder = 0
+    end
+    object Edit2: TEdit
+      Left = 96
+      Top = 53
+      Width = 121
+      Height = 23
+      TabOrder = 1
+    end
+    object Edit3: TEdit
+      Left = 96
+      Top = 82
+      Width = 121
+      Height = 23
+      TabOrder = 2
+    end
+    object Edit4: TEdit
+      Left = 96
+      Top = 120
+      Width = 121
+      Height = 23
+      TabOrder = 3
+    end
+    object Edit5: TEdit
+      Left = 96
+      Top = 160
+      Width = 121
+      Height = 23
+      TabOrder = 4
+    end
+    object Edit6: TEdit
+      Left = 96
+      Top = 189
+      Width = 121
+      Height = 23
+      TabOrder = 5
+    end
+  end
 end
