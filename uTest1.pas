@@ -30,7 +30,8 @@ type
     Edit3: TEdit;
     Edit4: TEdit;
     Edit5: TEdit;
-    Edit6: TEdit;  // 기본은 published
+    Edit6: TEdit;
+    Button9: TButton;  // 기본은 published
     procedure MyButtonClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -39,6 +40,8 @@ type
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure TestHandler(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,6 +56,7 @@ uses
   uTest4;
 var
   h:TH;
+  Test_Button:TButton;
 {$R *.dfm}
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -99,9 +103,25 @@ begin
   h.Free; // 파괴자루틴을 불러준다
 end;
 
+procedure TForm1.Button9Click(Sender: TObject);
+begin
+  Test_Button := TButton.Create(self);
+  Test_Button.Parent := self;
+  Test_Button.left := Button9.Left;
+  Test_Button.Top := Button9.Top + Button9.Height + 40;
+  Test_Button.Caption := 'test';
+  Test_Button.SetFocus;
+  Test_Button.OnClick := TestHandler;
+end;
+
 procedure TForm1.MyButtonClick(Sender: TObject);
 begin
   form1.Close;
+end;
+
+procedure TForm1.TestHandler(Sender: TObject);
+begin
+  ShowMessage('test');
 end;
 
 end.
