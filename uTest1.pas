@@ -31,7 +31,9 @@ type
     Edit4: TEdit;
     Edit5: TEdit;
     Edit6: TEdit;
-    Button9: TButton;  // 기본은 published
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;  // 기본은 published
     procedure MyButtonClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -42,6 +44,8 @@ type
     procedure Button8Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure TestHandler(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,11 +57,37 @@ var
 
 implementation
 uses
-  uTest4;
+  uTest4, uTest3, uTest2;
+
 var
   h:TH;
   Test_Button:TButton;
 {$R *.dfm}
+
+procedure TForm1.Button10Click(Sender: TObject);
+var
+  i:byte;
+begin
+  for I := 0 to Application.ComponentCount -1 do
+    if Application.Components[i] is TForm2 then
+    begin
+      Form2.show;
+      Exit;
+    end;
+
+
+  Form2 := TForm2.Create(Application);
+  caption := IntToStr(Application.ComponentCount);
+  Form2.Show;
+end;
+
+procedure TForm1.Button11Click(Sender: TObject);
+begin
+  Form3 := TForm3.Create(Application);
+  if Form3.ShowModal = mrOK then
+    ShowMessage(DateTimeToStr(Form3.DateTimePicker1.Date));
+  Form3.Free;
+end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin

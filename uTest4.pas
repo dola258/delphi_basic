@@ -7,7 +7,7 @@ uses
   vcl.Dialogs;
 type
   TDog = class
-      Name:string;
+    Name:string;
     Age:byte;
     Address:string;
     function GetName:string;

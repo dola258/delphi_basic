@@ -195,4 +195,22 @@ object Form1: TForm1
     TabOrder = 10
     OnClick = Button9Click
   end
+  object Button10: TButton
+    Left = 40
+    Top = 337
+    Width = 89
+    Height = 25
+    Caption = 'show'
+    TabOrder = 11
+    OnClick = Button10Click
+  end
+  object Button11: TButton
+    Left = 40
+    Top = 384
+    Width = 89
+    Height = 25
+    Caption = 'showModal'
+    TabOrder = 12
+    OnClick = Button11Click
+  end
 end
