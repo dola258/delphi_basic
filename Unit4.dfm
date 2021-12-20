@@ -13,6 +13,8 @@ object Form4: TForm4
   KeyPreview = True
   Position = poScreenCenter
   Visible = True
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 15

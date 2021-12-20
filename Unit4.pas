@@ -1,4 +1,4 @@
-unit Unit4;
+unit uTest4;
 
 interface
 
@@ -14,6 +14,8 @@ type
     Edit3: TEdit;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
   public
@@ -33,6 +35,21 @@ begin
   if key = vk_Return then
     SelectNext(Sender as TWinControl, True, True);
 
+end;
+
+procedure TForm4.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  if Edit1.Text <> '' then
+  begin
+    ShowMessage('에디터 지우고 종료');
+    CanClose := False;
+  end;
+
+end;
+
+procedure TForm4.FormCreate(Sender: TObject);
+begin
+  Edit1.Text := IntToStr(100) ;
 end;
 
 procedure TForm4.FormKeyDown(Sender: TObject; var Key: Word;
