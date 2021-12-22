@@ -62,7 +62,9 @@ type
     procedure RichEdit1Change(Sender: TObject);
   private
     { Private declarations }
+    // 글자수
     function GetCurPos(RichEdit:TRichEdit):integer;
+    // 라인수
     function GetCurLine(RichEdit:TRichEdit):integer;
   public
     { Public declarations }
