@@ -8,7 +8,7 @@ uses
   System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan,
   System.ImageList, Vcl.ImgList, Vcl.ToolWin, Vcl.ActnCtrls, Vcl.Ribbon,
   Vcl.RibbonLunaStyleActnCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Menus,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.Touch.GestureMgr;
 
 type
   TMainForm = class(TForm)
@@ -51,6 +51,7 @@ type
     RichEdit1: TRichEdit;
     StatusBar1: TStatusBar;
     Timer1: TTimer;
+    GestureManager1: TGestureManager;
     procedure New_ActionExecute(Sender: TObject);
     procedure FileOpen1BeforeExecute(Sender: TObject);
     procedure FileOpen1Accept(Sender: TObject);
@@ -60,6 +61,9 @@ type
     procedure ShowHint(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RichEdit1Change(Sender: TObject);
+    procedure Top_ActionExecute(Sender: TObject);
+    procedure RichEdit1Gesture(Sender: TObject;
+      const EventInfo: TGestureEventInfo; var Handled: Boolean);
   private
     { Private declarations }
     // 글자수
@@ -129,6 +133,15 @@ begin
     Format('현재칼럼: %d 총 라인수: %d', [GetCurPos(RichEdit1) +1, GetCurLine(RichEdit1) +1]);
 end;
 
+procedure TMainForm.RichEdit1Gesture(Sender: TObject;
+  const EventInfo: TGestureEventInfo; var Handled: Boolean);
+begin
+  case EventInfo.GestureID of
+    -1: ShowMessage('마이 에스');
+    -2: ShowMessage('마이 큐');
+  end;
+end;
+
 procedure TMainForm.ShowHint(Sender: TObject);
 begin
   StatusBar1.Panels[0].Text := Application.Hint;
@@ -139,6 +152,16 @@ end;
 procedure TMainForm.Timer1Timer(Sender: TObject);
 begin
   StatusBar1.Panels[2].Text := FormatDateTime('YYYY-mmmm-DD dddd hh:nn:ss am/pm', now);
+end;
+
+
+procedure TMainForm.Top_ActionExecute(Sender: TObject);
+begin
+  Top_Action.Checked := not Top_Action.Checked;
+  if  Top_Action.Checked then
+    FormStyle := fsStayOnTop
+  else
+    FormStyle := fsNormal;
 end;
 
 end.
